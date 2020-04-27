@@ -6,7 +6,15 @@ void main() {
   ));
 }
 
-class Home extends StatelessWidget {
+class Home extends StatefulWidget {
+  @override
+  _HomeState createState() => _HomeState();
+}
+
+class _HomeState extends State<Home> {
+
+  int level = 0;
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -56,7 +64,7 @@ class Home extends StatelessWidget {
               height: 2.0,
             ),
             Text(
-              '12',
+              '$level',
               style: TextStyle(
                 color: Colors.white,
                 letterSpacing: 2,
@@ -84,6 +92,17 @@ class Home extends StatelessWidget {
               ],
             )
           ],
+        ),
+      ),
+      floatingActionButton: FloatingActionButton(
+        onPressed: (){
+          setState(() {
+            level += 1;
+          });
+        },
+        child: Icon(
+          Icons.add,
+          color: Colors.grey[800],
         ),
       ),
     );
